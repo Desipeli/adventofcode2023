@@ -31,22 +31,12 @@ for i, loc in enumerate(locations):
 
         # expanse
 
-        if y < 0:
-            x_step = -1
-        else:
-            x_step = 1
-        x = locations[j][0] - loc[0]
-        for e_x in range(loc[0], loc[0]+x, x_step):
-            if e_x in expanded_cols:
+        for e_col in expanded_cols:
+            if e_col > min(loc[0], locations[j][0]) and e_col < max(loc[0], locations[j][0]):
                 total_sum += EXPANSE-1
 
-        y = locations[j][1] - loc[1]
-        if y < 0:
-            y_step = -1
-        else:
-            y_step = 1
-        for e_y in range(loc[1], loc[1]+y, y_step):
-            if e_y in expanded_lines:
+        for e_row in expanded_lines:
+            if e_row > min(loc[1], locations[j][1]) and e_row < max(loc[1], locations[j][1]):
                 total_sum += EXPANSE-1
 
         total_sum += local_sum
