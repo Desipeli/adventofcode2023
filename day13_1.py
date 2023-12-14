@@ -13,16 +13,18 @@ for line in patterns_input:
     block.append(line)
 blocks.append(block)
 
-def find_reflections(block :list, istart: int = 0, iplus: int = 0):
+
+def find_reflections(block: list, istart: int = 0, iplus: int = 0):
     i1 = istart - iplus
     i2 = istart + iplus + 1
-    if i1 == len(block)-1: # Ei voida aloittaa viimeiseltä riviltä
+    if i1 == len(block)-1:  # Ei voida aloittaa viimeiseltä riviltä
         return False
-    if i1 < 0 or i2 >= len(block): # Ollaan menty rajan yli, eli löytyi
+    if i1 < 0 or i2 >= len(block):  # Ollaan menty rajan yli, eli löytyi
         return True
     if not block[i1] == block[i2]:
         return False
     return find_reflections(block, istart, iplus+1)
+
 
 def flip_block(block):
     flipped = []
